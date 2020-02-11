@@ -7,7 +7,7 @@ const WorkoutSchema = new Schema (
   {
     day: {
         type: Date,
-        default: Date.now
+        default: () => new Date()
     },
     exercises: [
       {
@@ -39,6 +39,11 @@ const WorkoutSchema = new Schema (
         }
       }
     ]
+  },
+  {
+    toJSON: {
+      virtuals: true
+    }
   }
 );
 

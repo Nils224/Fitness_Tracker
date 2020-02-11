@@ -64,4 +64,15 @@ module.exports = function(app) {
       });
   });
 
+  //delete workout
+  app.delete('/api/workouts', ({ body }, res) => {
+    Workout.findByIdAndDelete(body.id)
+      .then(() => {
+        res.json(true);
+      })
+      .catch(err => {
+        res.json(err);
+      });
+  });
+
 }
